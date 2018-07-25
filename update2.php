@@ -44,8 +44,10 @@ $update_link = '<a href="update2.php?id='.$_GET['id'].'">update</a>';
 		<?=$list?>
 	</ol>
 	<a href="create2.php">create</a>
-	<?=$update_link?>
-	<h2><?=$article['title']?></h2>
-	<?=$article['description']?>
+	<form action="process_create2.php" method="post">
+		<p><input type="text" name="title" placeholder="Title" value="<?=$article['title']?>"></p>
+		<p><textarea name="description" placeholder="Description"><?=$article['description']?></textarea></p>
+		<p><input type="submit"></p>
+	</form>
 </body>
 </html>
