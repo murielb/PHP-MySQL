@@ -10,13 +10,14 @@ while($row = mysqli_fetch_array($result)){
 	// = 다음에 나오는 $list.을 빼니까 마지막 리스트 한개만 나오네..
 }
 
-
-$article = array(
-	'title' => 'Welcom',
-	'description' => 'Hello, Web'
-);
-
-
+$sql = "select * from author";
+$result = mysqli_query($conn, $sql);
+$select_form = '<select name="author_id">';
+while($row = mysqli_fetch_array($result)){
+	$select_form .= '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+	
+}
+$select_form = $select_form.'</select>';
 ?>
 
 <!doctype html>
@@ -34,6 +35,7 @@ $article = array(
 	<form action="process_create2.php" method="post">
 		<p><input type="text" name="title" placeholder="Title"></p>
 		<p><textarea name="description" placeholder="Description"></textarea></p>
+		<?=$select_form?>
 		<p><input type="submit"></p>
 	</form>
 </body>
